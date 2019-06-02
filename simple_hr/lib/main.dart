@@ -2,7 +2,9 @@
 // throw an error popup. 
 
 
-
+import 'package:audio_service/audio_service.dart';
+import 'package:audioplayer/audioplayer.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -34,11 +36,16 @@ class _MyHomePageState extends State<MyHomePage> {
   int _minHR = 0;
   int _maxHR = 0;
   int _currentHR = 0;
+  FlutterTts flutterTts = new FlutterTts();
 
-  void _start(){
-    // start pinging the Polar HR monitor and checking if my HR is lower or
-    // higher than it should be.
-    print("I feel like something should be happening...");
+  // void _start(){
+  //   // start pinging the Polar HR monitor and checking if my HR is lower or
+  //   // higher than it should be.
+  //   print("I feel like something should be happening...");
+  // }
+
+  Future _speak() async{
+    flutterTts.speak("Hello World");
   }
 
   @override
@@ -69,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _start,
+        onPressed: _speak,
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
