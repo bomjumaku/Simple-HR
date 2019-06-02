@@ -44,8 +44,12 @@ class _MyHomePageState extends State<MyHomePage> {
   //   print("I feel like something should be happening...");
   // }
 
-  Future _speak() async{
-    flutterTts.speak("Hello World");
+  Future _update() async{
+    String message = "max heart rate is " + _maxHR.toString() +
+     "... min heart rate is " + _minHR.toString() + 
+     "... current heart rate is " + _currentHR.toString();
+    flutterTts.speak(message);
+
   }
 
   @override
@@ -76,10 +80,10 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _speak,
+        onPressed: _update,
         tooltip: 'Increment',
         child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }
